@@ -1,0 +1,89 @@
+equals method overriding: 
+
+Q:important overridable methods in string and non final methods
+ equals,hashcode,toString()- returnsclassname and hashcode 
+
+ //default behaviour of equals - checks for references. just like ==. 
+
+ demo obj=new demo(10);
+ demo obj1=new demo(10); 
+ obj==obj1 //returns false
+ onj1.equals(obj); //return false 
+
+ typecasting of object is allowed because every class object is subclass of object superclasss.
+ 
+ object instanceof operator:  
+ instanceof means- to check the given an object is a instance or not. 
+  to avoid class cast exception- this means object.equals Demo object. 
+
+ demo obj1=new demo(10); 
+  obj1.equals(10); //false  
+
+  accno,name, and balance , appr methods name and override equals methods with balance and acc name are same return true 
+
+toString() method overriding : to get string representation of an object.   
+//never use == instead always use .equals() to check two string objects.
+
+
+//ARRAYS:
+
+difference bw these statements:
+
+1.   int[] a, b  //it is recommended in java(always use subscript with datatype not with variable)
+2.   int a[], b[] 
+3.   int a[], b 
+     int a[3]={1,4,5} //outputs=? in java, u cannot give the size of the array.
+     sop(a); 
+ int a[]=new int[3]; // prints 0's 
+ int b,a[3];
+ b=new int[3]; 
+ int a[]=new int[4]{1,2,3}; //illegal :as both dimension creation and initialization is not allowed 
+ int a[]=new int[4]{1,2,3,4};  
+
+ int [] arr2,arr3={3,9} //here arr3 is initialized. 
+ arr2[0] //invalid 
+ arr3[0] //valild  
+
+ String[] s1={"hello","world"}
+String[] s2=s1;
+s1.equals(s2) //true //without overriding returns false
+s1.toString() ; //hashcode
+Arrays.toString(s1); //[hello, world] 
+
+to check 2 arrays are equal are not 
+override toString method to compare elements of arrays if they are of with same sizes.  
+
+String[] arr4=new String[2];
+sout(arr4[0]); //outputs nulll
+sout(arr4.length); //2 
+
+int a[]={13,2,5,6};
+Arrays.sort(a);
+sout(Arrays.toString(a)) 
+
+String a={"2","1","12","32"} 
+Arrays.sort(a) //sorts based on ascii values - 
+
+class Circle {
+    double radius;  
+    //static shares a same copy, non static makes each copy for every data emmber
+    //if
+    //  static double radius;
+    Circle()
+    {
+        radius++; //makes radius 1.0 ,//it outputs 1.0 2.0 3.0
+    }
+    double getRadius(){ 
+        return radius;
+    }
+    psvm(){
+circle[] obj=new circle[3]; 
+
+for(int i=0;i<obj.length;i++) //3 references of circle each pointing to null therefore results in null pointer exception 
+ obj[i]=new circle();//add this  obj[i]=new circle();
+sop(obj[i].radius); // null pointer exception  
+ 
+ for(int i=0;i<obj.length;i++)
+sout(obj[i].radius) //3.0  3.0  3.0
+    }
+}
