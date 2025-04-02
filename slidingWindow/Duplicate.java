@@ -10,20 +10,14 @@ public class Duplicate{
         int k=sc.nextInt();
         System.out.println(duplicate(arr,n,k));
     }
-    public static boolean duplicate(int[] arr,int n,int k){
-        HashSet<Integer>window=new HashSet<>();
-        for(int i=0;i<n;i++){
-            if(i>=k) {window.remove(arr[i-k]);}
-            if(window.contains(arr[i])){ return true;}
-            window.add(arr[i]);        
+    public static boolean duplicate(int[] nums, int n,int k) {
+        HashSet<Integer> wind = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (wind.contains(nums[i])) return true;
+            wind.add(nums[i]);
+            if (i >= k) wind.remove(nums[i - k]); 
         }
         return false;
-        // for(int i=0;i<n;i++){
-        //     for(int j=i+1;j<i+k && j<n ;j++){
-        //         if(arr[i]==arr[j]) return true;
-        //     }
-        // }return false;
-        
     }
 }
 /*

@@ -16,27 +16,25 @@ public class decode{
             Arrays.fill(res,0);
             return res;
         }
-        int sum=0,start,end;
-        if(k<0){
-            start=n+k;
-            end=n-1;
-        }else{
-            start=1;
-            end=k;
+        for (int i = 0; i < n; i++) {
+            int sum = 0;
+            if (k > 0) {
+                for (int j = 1; j <= k; j++) {
+                    sum += code[(i + j) % n]; 
+                }
+            } else {
+                for (int j = 1; j <= -k; j++) {
+                    sum += code[(i - j + n) % n]; 
+                }
+            }
+            res[i] = sum;
         }
-        for(int i=start;i<=end;i++){
-            sum+=code[i%n];
-        }
-        for(int i=0;i<n;i++){
-            res[i]=sum;
-            sum-=code[start%n];
-            sum+=code[(end+1)%n];
-            start++;
-            end++;
-        }return res;
+
+        return res;
     }
 }
-/*Mr Bond is a spy and he is working on a mission to solve that mission he needs 
+/*1652. Defuse the Bomb
+Mr Bond is a spy and he is working on a mission to solve that mission he needs 
 list of numbers which are password to a secret locker, he got a secret code from his informer 
 which consists of a circular array code of length of n and a key k.
 

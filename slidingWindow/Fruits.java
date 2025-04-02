@@ -10,19 +10,20 @@ public class Fruits{
         System.out.println(res(arr,n));
     }
     public static int res(int[] arr,int n){
-        int maxF=0;int l=0;
-        HashMap<Integer,Integer> basket=new HashMap<>();
-        for(int r=0;r<n;r++){
-            basket.put(arr[r],basket.getOrDefault(arr[r],0)+1);
-            while(basket.size()>2){
-                basket.put(arr[l],basket.get(arr[l])-1);
-                if(basket.get(arr[l])==0){
-                    basket.remove(arr[l]);
+        int maxF = 0, l = 0;
+        HashMap<Integer, Integer> basket = new HashMap<>();
+        for (int r = 0; r < arr.length; r++) {
+            basket.put(arr[r], basket.getOrDefault(arr[r], 0) + 1);
+            while (basket.size() > 2) {
+                basket.put(arr[l], basket.get(arr[l]) - 1); //remove one fruit from left
+                if (basket.get(arr[l]) == 0) {
+                    basket.remove(arr[l]); 
                 }
-                l++;
+                l++; 
             }
-            maxF=Math.max(maxF,r-l+1);
+            maxF = Math.max(maxF, r - l + 1);
         }
+        
         return maxF;
     }
 }//boat recolor
